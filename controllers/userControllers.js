@@ -24,7 +24,7 @@ exports.user_create_post = [
               lastName: req.body.lastName,
               email: req.body.email,
               password: hashedPassword,
-              membership: false,
+              isMember: false,
               isAdmin: false,
             });
             const result = await user.save();
