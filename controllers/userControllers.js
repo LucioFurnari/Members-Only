@@ -11,9 +11,11 @@ exports.user_create_post = [
   
   asyncHandler(async (req, res, next) => {
     try {
-      const errors = validationResult(res);
+      const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
+        res.render('sign-up', { errors: errors.array() });
+      } else {
         bcryptjs.hash(req.body.password, 10 , async (err, hashedPassword) => {
           if (err) throw err;
           else {
@@ -29,8 +31,6 @@ exports.user_create_post = [
             res.redirect('/');
           }
         })
-      } else {
-        res.render('sign-up', { errors: errors.array() });
       }
     } catch (error) {
       return next(error)
