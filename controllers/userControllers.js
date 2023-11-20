@@ -3,6 +3,10 @@ const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 
+exports.index = (req, res) => res.render('index');
+
+exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [] });
+
 exports.user_create_post = [
   body('name', 'The name should not be empty').trim().isLength({ min: 1}).escape(),
   body('lastName', 'The last name should not be empty').trim().isLength({ min: 1}).escape(),
