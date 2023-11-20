@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const user_controllers = require('../controllers/userControllers');
+const { index, user_create_post, user_signup_get } = require('../controllers/userControllers');
 
-router.get('/', (req, res) => {
-  res.render('index');
-});
+router.get('/', index);
 
-router.get('/sign-up', (req, res) => {
-  res.render('sign-up', { errors: []});
-});
+router.get('/sign-up', user_signup_get);
 
-router.post('/sign-up', user_controllers.user_create_post);
+router.post('/sign-up', user_create_post);
 // Export router
 module.exports = router;
