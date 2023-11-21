@@ -90,3 +90,10 @@ exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/log-in'
 });
+
+exports.user_logout = (req, res) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect('/')
+  });
+};
