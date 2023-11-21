@@ -2,8 +2,41 @@ const { body, validationResult } = require('express-validator');
 const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
-exports.index = (req, res) => res.render('index');
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ email: username });
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username' });
+      };
+      const match = await bcryptjs.compare(password, user.password);
+      if(!match) {
+        return done(null, false, { message: 'Incorrect password' });
+      }
+      return done(null, user);
+    } catch (error) {
+      return done(error);
+    }
+  })
+)
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error);
+  }
+});
+
+exports.index = (req, res) => res.render('index', { user: req.user });
 
 exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [] });
 
@@ -50,3 +83,10 @@ exports.user_create_post = [
     }
   })
 ]
+
+exports.user_login_get = (req, res) => res.render('log-in');
+
+exports.user_login_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/log-in'
+});
