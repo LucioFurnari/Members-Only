@@ -97,3 +97,14 @@ exports.user_logout = (req, res) => {
     res.redirect('/')
   });
 };
+
+exports.membership_get = (req, res) => res.render('membership');
+
+exports.validate_membership = async (req, res) => {
+  if (req.body.membership === process.env.MEMBER_CODE) {
+    const user = await User.findOneAndUpdate({ name: req.user.name }, { isMember: true });
+    res.redirect('/');
+  } else {
+    res.redirect('/membership');
+  }
+};
