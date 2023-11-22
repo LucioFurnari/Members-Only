@@ -11,11 +11,13 @@ I created this project mainly to practice full-stack development with a focus on
 - Membership and Admin with enter a secret code.
 - Schema validation with Mongoose.
 - Server app create with Express js using MVC design pattern.
+- Front end created using ejs view engine.
 
 # Technologies Used
 - Node js.
 - Javascript.
 - Express.
+- Ejs.
 - MongoDB.
 - Mongoose.
 - Passportjs.
