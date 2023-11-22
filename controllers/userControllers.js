@@ -100,11 +100,31 @@ exports.user_logout = (req, res) => {
 
 exports.membership_get = (req, res) => res.render('membership');
 
-exports.validate_membership = async (req, res) => {
-  if (req.body.membership === process.env.MEMBER_CODE) {
-    const user = await User.findOneAndUpdate({ name: req.user.name }, { isMember: true });
-    res.redirect('/');
-  } else {
-    res.redirect('/membership');
+exports.validate_membership = [
+  body('membership', 'The code is incorrect').custom(
+    (value) => {
+      return value === process.env.MEMBER_CODE
+    }
+  ).escape(),
+  body('admin_code', 'Complete the input').custom(
+    (value) => {
+      return value === process.env.ADMIN_CODE
+    }
+  ).escape(),
+
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render('membership');
+    } else {
+      if (req.body.membership === process.env.MEMBER_CODE) {
+        const user = await User.findOneAndUpdate({ email: req.user.email }, { isMember: true });
+      }
+      if (req.body.admin_code === process.env.ADMIN_CODE) {
+        const user = await User.findOneAndUpdate({ email: req.user.email }, { isAdmin: true });
+      }
+      res.redirect('/')
+    }
   }
-};
+]
