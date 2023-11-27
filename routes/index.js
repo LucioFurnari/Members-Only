@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { index, user_create_post, user_signup_get, user_login_get, user_login_post, user_logout, membership_get, validate_membership } = require('../controllers/userControllers');
+const { create_message } = require('../controllers/messageController');
 
 router.get('/', index);
 
@@ -17,6 +18,8 @@ router.get('/log-out', user_logout);
 router.get('/membership', membership_get)
 
 router.post('/membership', validate_membership);
+
+router.post('/create_msg', create_message);
 
 // Export router
 module.exports = router;
