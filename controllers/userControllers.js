@@ -106,7 +106,7 @@ exports.validate_membership = [
       return value === process.env.MEMBER_CODE
     }
   ).escape(),
-  body('admin_code', 'Complete the input').custom(
+  body('admin_code', 'The code is incorrect').custom(
     (value) => {
       return value === process.env.ADMIN_CODE
     }
