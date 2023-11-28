@@ -7,13 +7,20 @@
   <title>Members Only</title>
 </head>
 <body>
-  <h1>Hello !</h1>
+  <%- include('header', { user: user}) %>
   <% if (user) { %>
-    <h2>Welcome <%= user.name %> </h2>
-    <a href="/log-out">Log out</a>
-    <a href="/membership">Membership</a>
-  <% } %>
-  <a href="/log-in">Log in</a>
-  <a href="/sign-up">Sign up</a>
+    <section class="main">
+      <h1>Special club for members only</h1>
+      <h2>Welcome <%= user.name %> </h2>
+      <%- include('msg-form') %>
+      <%- include('msg-list', { messages: messages, user: user }) %>
+    </section>
+  <% } else { %>
+    <section class="main">
+      <h1>Special club for members only</h1>
+      <%- include('msg-list', { messages: messages, user: '' }) %>
+    </section>
+  <% } %> 
+  <%- include('footer') %>
 </body>
 </html>
