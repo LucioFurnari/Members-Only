@@ -38,21 +38,25 @@ passport.deserializeUser(async (id, done) => {
 });
 
 async function handleMessages () {
-  const messages_list = await Message.find({});
+  try {
+    const messages_list = await Message.find({});
 
-  const promises = await messages_list.map(async (message) => {
-    const user = await User.findOne({ _id: message.user });
+    const promises = await messages_list.map(async (message) => {
+      const user = await User.findOne({ _id: message.user });
 
-    return {
-      title: message.title,
-      message: message.text,
-      author: user.name,
-    }
+      return {
+        title: message.title,
+        message: message.text,
+        author: user.name,
+      }
   })
 
-  const list = await Promise.all(promises)
+    const list = await Promise.all(promises)
 
-  return list
+    return list
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 
