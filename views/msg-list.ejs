@@ -1,0 +1,8 @@
+<section>
+  <% if (messages.length > 0) { %>
+    <% messages.forEach(element => { %>
+      <h2><%= element.title %></h2>
+      <p><%= element.message %></p>
+    <%})%>
+  <% } %>
+</section>
