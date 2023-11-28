@@ -1,1 +1,164 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{background-color:#f3f3f3;font-family:'Roboto', sans-serif;min-height:100vh;display:flex;flex-direction:column;position:relative}footer{display:flex;margin-top:auto}nav{padding:2rem 30rem;display:flex;justify-content:flex-end;align-items:center;border-bottom:1px solid #191919}nav a{display:inline-block;text-decoration:none;margin-left:2rem;padding-bottom:2px;color:#191919;border-bottom:2px solid transparent}nav a:hover{border-bottom:2px solid black}.login-section{padding:2rem 30rem}.overlay{display:none;top:0;left:0;width:100%;height:100vh}.overlay form{display:flex;flex-direction:column;padding:1rem;background-color:aquamarine}.active{display:flex;align-items:center;justify-content:center;position:absolute;background-color:rgba(66,66,66,0.3)}
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: rgb(243, 243, 243);
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+footer {
+  display: flex;
+  margin-top: auto;
+}
+
+nav {
+  padding: 2rem 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(25, 25, 25);
+}
+nav > a {
+  color: rgb(25, 25, 25);
+  text-decoration: none;
+}
+nav > a span {
+  color: rgb(50, 32, 220);
+}
+nav div {
+  display: flex;
+}
+nav div a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 2rem;
+  padding-bottom: 2px;
+  color: rgb(25, 25, 25);
+  border-bottom: 2px solid transparent;
+}
+nav div a:hover {
+  border-bottom: 2px solid black;
+}
+nav div a img {
+  width: 22px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.main {
+  margin: 0 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main h1 {
+  font-size: 46px;
+  margin: 3rem 0;
+}
+
+.msg-list h2 {
+  margin: 3rem 0;
+}
+.msg-list div {
+  margin-bottom: 3rem;
+}
+.msg-list h3 {
+  border: 1px solid black;
+  border-bottom: 1px solid gray;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 22px;
+}
+.msg-list p {
+  border: 1px solid black;
+  border-top: none;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.login-section {
+  padding: 2rem 30rem;
+}
+
+.overlay {
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.overlay form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: aquamarine;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(66, 66, 66, 0.3);
+}
+
+/*# sourceMappingURL=main.css.map */

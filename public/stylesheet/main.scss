@@ -2,12 +2,15 @@
 
 $bg-color: rgb(243, 243, 243);
 $lg-padding: 30rem;
+$lg-margin: 30rem;
 $link-color: rgb(25,25,25);
 $link-bg: rgb(157, 202, 234);
 $link-bg-hover: rgb(129, 191, 236);
 $link-radius: 12px;
 $nav-border: rgb(25, 25, 25);
+$highlight-color: rgb(50, 32, 220);
 
+$lg-h1: 46px;
 $overlay-bg: rgba(66, 66, 66, 0.3);
 
 
@@ -79,21 +82,71 @@ footer {
 nav {
   padding: 2rem $lg-padding;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $nav-border;
-  a {
-    display: inline-block;
-    text-decoration: none;
-    margin-left: 2rem;
-    padding-bottom: 2px;
-    color: $link-color;
-    border-bottom: 2px solid transparent;
-    &:hover {
-      border-bottom: 2px solid black;
+  > a {
+      color: $link-color;
+      text-decoration: none;
+      span {
+        color: $highlight-color;
+      }
+  }
+  div {
+    display: flex;
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      margin-left: 2rem;
+      padding-bottom: 2px;
+      color: $link-color;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        border-bottom: 2px solid black;
+      }
+      img {
+        width: 22px;
+        height: auto;
+        margin-right: 8px;
+      }
     }
   }
-  
+}
+
+.main {
+  margin: 0 $lg-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: $lg-h1;
+    margin: 3rem 0;
+  }
+}
+
+.msg-list {
+  h2 {
+    margin: 3rem 0;
+  }
+  div {
+    margin-bottom: 3rem;
+  }
+  h3 {
+    border: 1px solid black;
+    border-bottom: 1px solid gray;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 22px;
+  }
+  p {
+    border: 1px solid black;
+    border-top: none;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .login-section {
