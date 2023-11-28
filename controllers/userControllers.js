@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator');
 const User = require('../models/user');
+const Message = require('../models/message');
 const bcryptjs = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const passport = require('passport');
@@ -36,7 +37,31 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-exports.index = (req, res) => res.render('index', { user: req.user });
+async function handleMessages () {
+  const messages_list = await Message.find({});
+
+  const promises = await messages_list.map(async (message) => {
+    const user = await User.findOne({ _id: message.user });
+
+    return {
+      title: message.title,
+      message: message.text,
+      author: user.name,
+    }
+  })
+
+  const list = await Promise.all(promises)
+
+  return list
+};
+
+
+exports.index = async (req, res) =>  {
+  handleMessages()
+  .then((list) => {
+    res.render('index', { user: req.user, messages: list });
+  })
+};
 
 exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [] });
 
