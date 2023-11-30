@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/stylesheet/main.css">
   <title>Log in</title>
 </head>
 <body>
+<section class="main">
   <h1>Log in</h1>
-  <form action="" method="POST">
+  <form class="login-form" action="/log-in" method="POST">
     <label for="username">Username</label>
-    <input type="email" name="username" placeholder="username" id="username">
+    <input type="email" name="username" placeholder="username" id="username" required>
     <label>Password</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" required>
     <button type="submit">Log in</button>
   </form>
+</section>
 </body>
 </html>
