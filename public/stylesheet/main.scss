@@ -11,6 +11,7 @@ $nav-border: rgb(25, 25, 25);
 $highlight-color: rgb(50, 32, 220);
 
 $lg-h1: 46px;
+$lg-h2: 34px;
 $overlay-bg: rgba(66, 66, 66, 0.3);
 
 
@@ -123,6 +124,10 @@ nav {
     font-size: $lg-h1;
     margin: 3rem 0;
   }
+  h2 {
+    font-size: $lg-h2;
+    margin: 1rem 0;
+  }
 }
 
 .msg-list {
@@ -146,6 +151,38 @@ nav {
     padding-left: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+}
+
+.main-login {
+  margin: 0 $lg-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    font-size: $lg-h1;
+    margin: 3rem 0;
+    width: 24rem;
+  }
+}
+
+.msg-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 24rem;
+  input {
+    padding: 0.8rem 0.5rem;
+    width: 23rem;
+  }
+  button {
+    padding: 0.8rem 1rem;
+    margin-top: 3rem;
+    width: 100%;
   }
 }
 
