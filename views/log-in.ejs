@@ -8,6 +8,7 @@
 </head>
 <body>
 <section class="main-login">
+  <%- include('header', { user: user }) %>
   <h1>Log in</h1>
   <form class="login-form" action="/log-in" method="POST">
     <label for="username">Username</label>
