@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/stylesheet/main.css">
   <title>Sign Up</title>
 </head>
 <body>
-  <form action="" method="POST">
+<section>
+  <%- include('header', { user: user }) %>
+  <form action="/sign-up" method="POST">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" placeholder="name" value=<% if (errors.length > 0) { %> <%= inputs.name %> <% } %>>
     <label for="lastName">Last name</label>
@@ -25,5 +28,6 @@
       <p><%=element.msg %></p>
     <% }); %>
   <% } %>
+</section>
 </body>
 </html>
