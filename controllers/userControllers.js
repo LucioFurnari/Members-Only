@@ -67,7 +67,7 @@ exports.index = async (req, res) =>  {
   })
 };
 
-exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [] });
+exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [], user: req.user });
 
 exports.user_create_post = [
   body('name', 'The name should not be empty').trim().isLength({ min: 1}).escape(),
@@ -113,7 +113,7 @@ exports.user_create_post = [
   })
 ]
 
-exports.user_login_get = (req, res) => res.render('log-in');
+exports.user_login_get = (req, res) => res.render('log-in', { user: req.user });
 
 exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
