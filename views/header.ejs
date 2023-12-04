@@ -1,9 +1,25 @@
 <nav>
+  <a href="/">
+    <span>
+      Members
+    </span>
+    only club
+  </a>
   <% if (user) { %>
-    <a href="/log-out">Log out</a>
-    <a href="/membership">Membership</a>
+    <div>
+      <a href="/log-out">Log out</a>
+      <a href="/membership">Membership</a>
+    </div>
   <% } else { %>
-    <a href="/log-in" id="log-in">Log in</a>
-    <a href="/sign-up">Sign up</a>
+    <div>
+      <a href="/log-in" id="log-in">
+        <img src="../public/images/login_icon.svg">
+        Log in
+      </a>
+      <a href="/sign-up">
+        <img src="../public//images/user_icon.svg">
+        Sign up
+      </a>
+    </div>
   <% } %>
 </nav>
