@@ -7,22 +7,31 @@
   <title>Sign Up</title>
 </head>
 <body>
-<section>
   <%- include('header', { user: user }) %>
-  <form action="/sign-up" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" placeholder="name" value=<% if (errors.length > 0) { %> <%= inputs.name %> <% } %>>
-    <label for="lastName">Last name</label>
-    <input type="text" name="lastName" id="lastName" placeholder="last name" value=<% if (errors.length > 0) { %> <%= inputs.lastName %> <% } %>>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" placeholder="email" value=<% if (errors.length > 0) { %> <%= inputs.email %> <% } %>>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="password" value=<% if (errors.length > 0) { %> <%= inputs.password %> <% } %>>
-    <label for="confirm_password">Confirm password</label>
-    <input type="password" name="confirm_password" id="confirm_password" value=<% if (errors.length > 0) { %> <%= inputs.confirm_password %> <% } %>> 
+  <section class="main">
+  <form class="user-form" action="/sign-up" method="POST">
+    <fieldset class="floating-label">
+      <input type="text" name="name" id="name" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.name %> <% } %>>
+      <label for="name">Name</label>
+    </fieldset>
+    <fieldset class="floating-label">
+      <input type="text" name="lastName" id="lastName" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.lastName %> <% } %>>
+      <label for="lastName">Last name</label>
+    </fieldset>
+    <fieldset class="floating-label">
+      <input type="email" name="email" id="email" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.email %> <% } %>>
+      <label for="email">Email</label>
+    </fieldset>
+    <fieldset class="floating-label">
+      <input type="password" name="password" id="password" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.password %> <% } %>>
+      <label for="password">Password</label>
+    </fieldset>
+    <fieldset class="floating-label">
+      <input type="password" name="confirm_password" id="confirm_password" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.confirm_password %> <% } %>> 
+      <label for="confirm_password">Confirm password</label>
+    </fieldset>
     <button type="submit">Submit</button>
   </form>
-  <a href="/">Home</a>
   <% if (errors.length > 0) { %>
     <% errors.forEach(element => { %>
       <p><%=element.msg %></p>
