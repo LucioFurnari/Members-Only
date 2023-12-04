@@ -13,6 +13,8 @@ $highlight-color: rgb(50, 32, 220);
 $lg-h1: 46px;
 $lg-h2: 34px;
 $overlay-bg: rgba(66, 66, 66, 0.3);
+$input-focus: rgb(47, 28, 218);
+$input-error: rgb(187, 23, 23);
 
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -188,6 +190,84 @@ nav {
 
 .login-section {
   padding: 2rem $lg-padding;
+}
+
+.floating-label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  span {
+    color: $input-error;
+    padding-left: 1rem;
+  }
+
+  label {
+    position: absolute;
+    top: 0rem;
+    left: 0.8rem;
+    font-size: 12px;
+    padding-top: 4px;
+    transition: {
+      property: top, left, font-size;
+      duration: 0.3s;
+    }
+  }
+  input {
+    padding: 0.8rem;
+    padding-top: 1.2rem;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+  }
+  textarea {
+    padding: 0.8rem;
+    padding-top: 1.2rem;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+  }
+  input {
+    &:placeholder-shown ~ label {
+      font-size: 16px;
+      top: 0.8rem;
+      left: 0.8rem;
+      padding-top: 0px;
+    }
+  }
+  input {
+    &:focus {
+      border-bottom: 2px solid $input-focus;
+      margin-bottom: -1px;
+    }
+    &:focus ~ label {
+      font-size: 12px;
+      top: 0;
+      left: 0.8rem;
+      padding-top: 4px;
+      color: $input-focus;
+    }
+  }
+  textarea {
+    &:placeholder-shown ~ label {
+      font-size: 16px;
+      top: 0.8rem;
+      left: 0.8rem;
+    }
+  }
+  textarea {
+    &:focus {
+      border-bottom: 2px solid aquamarine;
+      margin-bottom: -1px;
+    }
+    &:focus ~ label {
+      font-size: 12px;
+      top: 0;
+      left: 0.8rem;
+      padding-top: 4px;
+      color: aquamarine;
+    }
+  }
 }
 
 .overlay {
