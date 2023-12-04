@@ -7,14 +7,21 @@
   <title>Log in</title>
 </head>
 <body>
-<section class="main-login">
   <%- include('header', { user: user }) %>
+  <section class="main-login">
   <h1>Log in</h1>
   <form class="login-form" action="/log-in" method="POST">
-    <label for="username">Username</label>
-    <input type="email" name="username" placeholder="username" id="username" required>
-    <label>Password</label>
-    <input type="password" name="password" id="password" required>
+    <fieldset class="floating-label">
+      <input type="email" name="username" placeholder="" id="email" required>
+      <label for="email">Email</label>
+    </fieldset>
+    <% if (errorMessages) { %>
+      <p><%= errorMessages[errorMessages.length-1] %></p>
+    <% } %>
+    <fieldset class="floating-label">
+      <input type="password" name="password" id="password" placeholder="" required>
+      <label for="password">Password</label>
+    </fieldset>
     <button type="submit">Log in</button>
   </form>
 </section>
