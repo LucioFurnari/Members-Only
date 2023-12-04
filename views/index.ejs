@@ -11,8 +11,6 @@
   <% if (user) { %>
     <section class="main">
       <h1>Special club for members only</h1>
-      <h2>Welcome <%= user.name %> </h2>
-      <%- include('msg-form') %>
       <%- include('msg-list', { messages: messages, user: user }) %>
     </section>
   <% } else { %>
