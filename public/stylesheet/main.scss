@@ -173,6 +173,35 @@ nav {
   }
 }
 
+//Membership form
+.membership-form {
+  display: flex;
+  flex-direction: column;
+  width: 24rem;
+  margin-top: 3rem;
+  input {
+    padding: 0.8rem 0.5rem;
+    width: 23rem;
+  }
+  button {
+    padding: 1rem 1.2rem;
+    margin-top: 3rem;
+    width: 100%;
+    font-size: 16px;
+    color: white;
+    background-color: $form-button;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      background-color: $form-button-hover;
+    }
+    &:focus {
+      background-color: $form-button-hover;
+    }
+  }
+}
+
 // Messages form
 .msg-form {
   display: flex;
@@ -256,6 +285,7 @@ nav {
   input {
     padding: 0.8rem;
     padding-top: 1.2rem;
+    font-size: 16px;
     border: none;
     outline: none;
     &:valid {
@@ -273,6 +303,7 @@ nav {
   textarea {
     padding: 0.8rem;
     padding-top: 1.2rem;
+    font-size: 16px;
     border: none;
     outline: none;
     &:valid {
