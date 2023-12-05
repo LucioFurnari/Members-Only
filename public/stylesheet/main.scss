@@ -14,7 +14,9 @@ $lg-h1: 46px;
 $lg-h2: 34px;
 $overlay-bg: rgba(66, 66, 66, 0.3);
 $input-focus: rgb(47, 28, 218);
-$input-error: rgb(187, 23, 23);
+$input-error: rgb(213, 35, 35);
+$form-button: rgb(61, 44, 220);
+$form-button-hover: rgb(84, 68, 230);;
 
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -132,9 +134,12 @@ nav {
   }
 }
 
+// Messages list section
 .msg-list {
   h2 {
-    margin: 3rem 0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
   }
   div {
     margin-bottom: 3rem;
@@ -168,12 +173,35 @@ nav {
   }
 }
 
+// Messages form
 .msg-form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  fieldset {
+    width: 100%;
+  }
+  button {
+    padding: 1rem 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 16px;
+    color: white;
+    background-color: $form-button;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      background-color: $form-button-hover;
+    }
+    &:focus {
+      background-color: $form-button-hover;
+    }
+  }
 }
 
-.login-form {
+// Login and sign up form
+.user-form {
   display: flex;
   flex-direction: column;
   width: 24rem;
@@ -182,9 +210,21 @@ nav {
     width: 23rem;
   }
   button {
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
     margin-top: 3rem;
     width: 100%;
+    font-size: 16px;
+    color: white;
+    background-color: $form-button;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      background-color: $form-button-hover;
+    }
+    &:focus {
+      background-color: $form-button-hover;
+    }
   }
 }
 
@@ -217,20 +257,40 @@ nav {
     padding: 0.8rem;
     padding-top: 1.2rem;
     border: none;
-    border-bottom: 1px solid gray;
     outline: none;
+    &:valid {
+      color: black;
+      border-bottom: 1px solid gray;
+    }
+    &:invalid {
+      color: $input-error;
+      border-bottom: 2px solid $input-error;
+    }
+    &:invalid ~ label {
+      color: $input-error;
+    }
   }
   textarea {
     padding: 0.8rem;
     padding-top: 1.2rem;
     border: none;
-    border-bottom: 1px solid gray;
     outline: none;
+    &:valid {
+      color: black;
+      border-bottom: 1px solid gray;
+    }
+    &:invalid {
+      color: $input-error;
+      border-bottom: 2px solid $input-error;
+    }
+    &:invalid ~ label {
+      color: $input-error;
+    }
   }
   input {
     &:placeholder-shown ~ label {
       font-size: 16px;
-      top: 0.8rem;
+      top: 14px;
       left: 0.8rem;
       padding-top: 0px;
     }
@@ -257,7 +317,7 @@ nav {
   }
   textarea {
     &:focus {
-      border-bottom: 2px solid aquamarine;
+      border-bottom: 2px solid $input-focus;
       margin-bottom: -1px;
     }
     &:focus ~ label {
@@ -265,7 +325,7 @@ nav {
       top: 0;
       left: 0.8rem;
       padding-top: 4px;
-      color: aquamarine;
+      color: $input-focus;
     }
   }
 }
