@@ -1,7 +1,11 @@
-<form action="/create_msg" method="POST">
-  <label id="msg-title">Title</label>
-  <input type="text" name="title" id="msg-title" placeholder="Title">
-  <label for="message">Message</label>
-  <input type="text" name="message" id="message" placeholder="Hello!">
+<form class="msg-form" action="/create_msg" method="POST">
+  <fieldset class="floating-label">
+    <input type="text" name="title" id="msg-title" placeholder="">
+    <label for="msg-title">Title</label>
+  </fieldset>
+  <fieldset class="floating-label">
+    <textarea  type="text" name="message" id="message" placeholder=""></textarea>
+    <label for="message">Message</label>
+  </fieldset>
   <button type="submit">Submit</button>
 </form>
