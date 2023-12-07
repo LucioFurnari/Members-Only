@@ -9,15 +9,15 @@ const LocalStrategy = require('passport-local');
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const user = await User.findOne({ email: username });
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username' });
+      const userFromDB = await User.findOne({ email: username });
+      if (!userFromDB) {
+        return done(null, false, { message: 'User not found' });
       };
-      const match = await bcryptjs.compare(password, user.password);
+      const match = await bcryptjs.compare(password, userFromDB.password);
       if(!match) {
         return done(null, false, { message: 'Incorrect password' });
       }
-      return done(null, user);
+      return done(null, userFromDB);
     } catch (error) {
       return done(error);
     }
@@ -48,6 +48,7 @@ async function handleMessages () {
         title: message.title,
         message: message.text,
         author: user.name,
+        timestamp: message.timestamp,
       }
   })
 
@@ -113,11 +114,12 @@ exports.user_create_post = [
   })
 ]
 
-exports.user_login_get = (req, res) => res.render('log-in', { user: req.user });
+exports.user_login_get = (req, res) => res.render('log-in', { user: req.user, errorMessages: req.session.messages });
 
 exports.user_login_post = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/log-in'
+  failureRedirect: '/log-in',
+  failureMessage: true
 });
 
 exports.user_logout = (req, res) => {
@@ -127,7 +129,7 @@ exports.user_logout = (req, res) => {
   });
 };
 
-exports.membership_get = (req, res) => res.render('membership');
+exports.membership_get = (req, res) => res.render('membership', { user: req.user });
 
 exports.validate_membership = [
   body('membership', 'The code is incorrect').custom(
