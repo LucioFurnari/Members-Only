@@ -7,7 +7,7 @@ const { format, parseISO } = require('date-fns');
 exports.create_message = async (req, res) => {
   if (req.isAuthenticated()) {
     const message = new Message({
-      title: req.body.title,
+      title: upperCaseTitle(req.body.title),
       text: req.body.message,
       timestamp: format(new Date(), "PPPPp"),
       user: req.user._id
@@ -17,3 +17,11 @@ exports.create_message = async (req, res) => {
     res.redirect('/')
   }
 };
+
+function upperCaseTitle (title) {
+  const textToArr = title.split("");
+  textToArr[0] = textToArr[0].toUpperCase();
+  const finalText = textToArr.join('');
+
+  return finalText;
+}
