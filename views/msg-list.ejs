@@ -1,8 +1,23 @@
-<section>
+<section class="msg-list">
+  <h2>Note: You have to be member to see message author and date.</h2>
+  <% if (user) { %>
+    <h2>Welcome <%= user.name %> </h2>
+    <%- include('msg-form') %>
+  <% } %>
   <% if (messages.length > 0) { %>
-    <% messages.forEach(element => { %>
-      <h2><%= element.title %></h2>
-      <p><%= element.message %></p>
+    <% messages.forEach(message => { %>
+      <div class="msg-container">
+        <div>
+          <h3><%= message.title %> </h3>
+          <% if (user.isMember)  {%>
+            <p>by <span><%= message.author %></span></p>
+            <p><%= message.timestamp %></p>
+          <% } else { %>
+            <p>-----------</p>
+          <% } %>
+        </div>
+        <p class="msg"><%= message.message %></p>
+      </div>
     <%})%>
   <% } %>
 </section>
