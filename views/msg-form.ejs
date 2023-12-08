@@ -3,9 +3,23 @@
     <input type="text" name="title" id="msg-title" placeholder="">
     <label for="msg-title">Title</label>
   </fieldset>
+  <% if (locals.errors) { %>
+    <% for (let i=0; i < errors.length; i++) { %>
+      <% if (errors[i].path === 'title') { %>
+        <p><%= errors[i].msg %></p>
+      <% } %>
+    <% } %>
+  <% } %>
   <fieldset class="floating-label">
     <textarea  type="text" name="message" id="message" placeholder=""></textarea>
     <label for="message">Message</label>
   </fieldset>
+  <% if (locals.errors) { %>
+    <% for (let i=0; i < errors.length; i++) { %>
+      <% if (errors[i].path === 'message') { %>
+        <p><%= errors[i].msg %></p>
+      <% } %>
+    <% } %>
+  <% } %>
   <button type="submit">Submit</button>
 </form>
