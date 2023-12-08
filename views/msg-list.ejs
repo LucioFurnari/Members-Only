@@ -2,7 +2,11 @@
   <h2>Note: You have to be member to see message author and date.</h2>
   <% if (user) { %>
     <h2>Welcome <%= user.name %> </h2>
-    <%- include('msg-form') %>
+    <% if (locals.errors)  {%>
+      <%- include('msg-form', { errors: errors }) %>
+    <% } else { %>
+      <%- include('msg-form') %>
+    <% } %>
   <% } %>
   <% if (messages.length > 0) { %>
     <% messages.forEach(message => { %>
