@@ -8,20 +8,34 @@
 </head>
 <body>
   <%- include('header', { user: user }) %>
-  <section class="main-login">
+  <section class="main">
   <h1>Log in</h1>
-  <form class="login-form" action="/log-in" method="POST">
+  <form class="user-form" action="/log-in" method="POST">
     <fieldset class="floating-label">
-      <input type="email" name="username" placeholder="" id="email" required>
+      <input type="text" name="username" placeholder="" id="email">
       <label for="email">Email</label>
     </fieldset>
+    <% if (locals.clientSideErrors) { %>
+      <% for(let i=0; i < clientSideErrors.length; i++) { %>
+        <% if (clientSideErrors[i].path === 'username' ) { %>
+          <p> <%= clientSideErrors[i].msg %> </p>
+        <% } %>
+      <% } %>
+    <% } %>
+    <fieldset class="floating-label">
+      <input type="password" name="password" id="password" placeholder="" >
+      <label for="password">Password</label>
+    </fieldset>
+    <% if (locals.clientSideErrors) { %>
+      <% for(let i=0; i < clientSideErrors.length; i++) { %>
+        <% if (clientSideErrors[i].path === 'password' ) { %>
+          <p> <%= clientSideErrors[i].msg %> </p>
+        <% } %>
+      <% } %>
+    <% } %>
     <% if (errorMessages) { %>
       <p><%= errorMessages[errorMessages.length-1] %></p>
     <% } %>
-    <fieldset class="floating-label">
-      <input type="password" name="password" id="password" placeholder="" required>
-      <label for="password">Password</label>
-    </fieldset>
     <button type="submit">Log in</button>
   </form>
 </section>
