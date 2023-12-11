@@ -60,7 +60,9 @@ async function handleMessages () {
   }
 };
 
+exports.handleMessages =  handleMessages;
 
+// Index controller.
 exports.index = async (req, res) =>  {
   handleMessages()
   .then((list) => {
@@ -68,8 +70,10 @@ exports.index = async (req, res) =>  {
   })
 };
 
+// User signup GET page controller.
 exports.user_signup_get = (req, res) => res.render('sign-up', { errors: [], user: req.user });
 
+// Create USER controller.
 exports.user_create_post = [
   body('name', 'The name should not be empty').trim().isLength({ min: 1}).escape(),
   body('lastName', 'The last name should not be empty').trim().isLength({ min: 1}).escape(),
@@ -114,14 +118,31 @@ exports.user_create_post = [
   })
 ]
 
+// Login form GET page controller.
 exports.user_login_get = (req, res) => res.render('log-in', { user: req.user, errorMessages: req.session.messages });
 
-exports.user_login_post = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/log-in',
-  failureMessage: true
-});
+// Login POST controller.
+exports.user_login_post = [ 
+  body('username', 'Enter an email').trim().notEmpty().escape().isEmail(),
+  body('password', "Don't leave the space empty").trim().notEmpty().escape(),
 
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render('log-in', { user: req.user, errorMessages: '', clientSideErrors: errors.array() });
+    }
+    console.log(req.session.messages)
+    next()
+  },
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/log-in',
+    failureMessage: true
+  })
+];
+
+// User logout controller.
 exports.user_logout = (req, res) => {
   req.logout((err) => {
     if (err) return next(err);
@@ -129,8 +150,10 @@ exports.user_logout = (req, res) => {
   });
 };
 
+// Membership GET page controller.
 exports.membership_get = (req, res) => res.render('membership', { user: req.user });
 
+// Validate membership controller.
 exports.validate_membership = [
   body('membership', 'The code is incorrect').custom(
     (value) => {
