@@ -146,16 +146,12 @@ nav {
     max-width: 45rem;
     margin-bottom: 3rem;
     border: 1px solid black;
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
+    padding: 1.2rem;
     .msg {
-      padding-left: 1rem;
-      padding-top: 1rem;
       color: black;
     }
     div {
       margin-bottom: 0.8rem;
-      padding-left: 1rem;
     }
     p {
       line-height: 1.6;
@@ -307,15 +303,16 @@ nav {
     font-size: 16px;
     border: none;
     outline: none;
+    border-bottom: 1px solid transparent;
     &:valid {
       color: black;
       border-bottom: 1px solid gray;
     }
-    &:invalid {
+    &:invalid:focus {
       color: $input-error;
       border-bottom: 2px solid $input-error;
     }
-    &:invalid ~ label {
+    &:invalid:focus ~ label {
       color: $input-error;
     }
   }
