@@ -123,16 +123,18 @@ exports.user_login_get = (req, res) => res.render('log-in', { user: req.user, er
 
 // Login POST controller.
 exports.user_login_post = [ 
-  body('username', 'Enter an email').trim().notEmpty().escape().isEmail(),
+  body('username')
+  .exists().withMessage("Don't leave the input empty").bail()
+  .isEmail().escape().withMessage('Enter a valid email').bail(),
   body('password', "Don't leave the space empty").trim().notEmpty().escape(),
 
   (req, res, next) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
+      console.log(errors.array())
       res.render('log-in', { user: req.user, errorMessages: '', clientSideErrors: errors.array() });
     }
-    console.log(req.session.messages)
     next()
   },
   passport.authenticate('local', {
