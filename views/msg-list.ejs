@@ -1,5 +1,4 @@
 <section class="msg-list">
-  <h2>Note: You have to be member to see message author and date.</h2>
   <% if (user) { %>
     <h2>Welcome <%= user.name %> </h2>
     <% if (locals.errors)  {%>
@@ -8,6 +7,7 @@
       <%- include('msg-form') %>
     <% } %>
   <% } %>
+  <p class="note">Note: You have to be member to see message author and date.</p>
   <% if (messages.length > 0) { %>
     <% messages.forEach(message => { %>
       <div class="msg-container">
