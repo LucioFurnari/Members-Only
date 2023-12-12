@@ -32,6 +32,7 @@ exports.create_message = [
   }
 ];
 
+// This function capitalize the first char in the title.
 function upperCaseTitle (title) {
   const textToArr = title.split("");
   textToArr[0] = textToArr[0].toUpperCase();
