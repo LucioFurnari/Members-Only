@@ -9,6 +9,7 @@
 <body>
   <%- include('header', { user: user }) %>
   <section class="main">
+  <h1>Sign up</h1>
   <form class="user-form" action="/sign-up" method="POST">
     <fieldset class="floating-label">
       <input type="text" name="name" id="name" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.name %> <% } %>>
