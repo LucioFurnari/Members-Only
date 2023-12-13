@@ -14,10 +14,24 @@
         <input type="text" name="membership" id="membership" placeholder="">
         <label for="membership">Enter membership code</label>
       </fieldset>
+      <% if (locals.errors) { %>
+        <% for (let i=0; i < errors.length; i++) { %>
+          <% if (errors[i].path === 'membership') { %>
+            <span><%= errors[i].msg %></span>
+          <% } %>
+        <% } %>
+      <% } %>
       <fieldset class="floating-label"> 
         <input type="text" name="admin_code" id="admin_code" placeholder="">
         <label for="admin_code">Enter Adming code</label>
       </fieldset>
+      <% if (locals.errors) { %>
+        <% for (let i=0; i < errors.length; i++) { %>
+          <% if (errors[i].path === 'admin_code') { %>
+            <span><%= errors[i].msg %></span>
+          <% } %>
+        <% } %>
+      <% } %>
       <button type="submit">Submit</button>
     </form>
   </section>
