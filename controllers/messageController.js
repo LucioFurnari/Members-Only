@@ -35,6 +35,11 @@ exports.create_message = [
   }
 ];
 
+exports.delete_message = async (req, res) => {
+  const deleteMessage = await Message.findByIdAndDelete(req.body.message_id)
+  res.redirect('/');
+};
+
 // This function capitalize the first char in the title.
 function upperCaseTitle (title) {
   const textToArr = title.split("");
