@@ -166,12 +166,12 @@ exports.validate_membership = [
     (value) => {
       return value === process.env.MEMBER_CODE
     }
-  ).escape(),
+  ).escape().optional({checkFalsy: true}),
   body('admin_code', 'The code is incorrect').custom(
     (value) => {
       return value === process.env.ADMIN_CODE
     }
-  ).escape(),
+  ).escape().optional({checkFalsy: true}),
 
   async (req, res) => {
     const errors = validationResult(req);
