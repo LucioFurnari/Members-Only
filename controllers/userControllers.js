@@ -49,6 +49,7 @@ async function handleMessages () {
         message: message.text,
         author: user.name,
         timestamp: message.timestamp,
+        id: message._id
       }
   })
 
@@ -137,7 +138,6 @@ exports.user_login_post = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log(errors.array())
       res.render('log-in', { user: req.user, errorMessages: '', clientSideErrors: errors.array() });
     }
     next()
