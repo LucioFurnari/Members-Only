@@ -15,29 +15,49 @@
       <input type="text" name="name" id="name" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.name %> <% } %>>
       <label for="name">Name</label>
     </fieldset>
+    <% for (let i=0; i < errors.length; i++) {%>
+      <% if (errors[i].path === 'name') { %>
+        <span><%= errors[i].msg %></span>
+      <% } %>
+    <% } %>
     <fieldset class="floating-label">
       <input type="text" name="lastName" id="lastName" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.lastName %> <% } %>>
       <label for="lastName">Last name</label>
     </fieldset>
+    <% for (let i=0; i < errors.length; i++) {%>
+      <% if (errors[i].path === 'lastName') { %>
+        <span><%= errors[i].msg %></span>
+      <% } %>
+    <% } %>
     <fieldset class="floating-label">
       <input type="email" name="email" id="email" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.email %> <% } %>>
       <label for="email">Email</label>
     </fieldset>
+    <% for (let i=0; i < errors.length; i++) {%>
+      <% if (errors[i].path === 'email') { %>
+        <span><%= errors[i].msg %></span>
+      <% } %>
+    <% } %>
     <fieldset class="floating-label">
       <input type="password" name="password" id="password" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.password %> <% } %>>
       <label for="password">Password</label>
     </fieldset>
+    <% for (let i=0; i < errors.length; i++) {%>
+      <% if (errors[i].path === 'password') { %>
+        <span><%= errors[i].msg %></span>
+      <% } %>
+    <% } %>
     <fieldset class="floating-label">
       <input type="password" name="confirm_password" id="confirm_password" placeholder="" value=<% if (errors.length > 0) { %> <%= inputs.confirm_password %> <% } %>> 
       <label for="confirm_password">Confirm password</label>
     </fieldset>
+    <% for (let i=0; i < errors.length; i++) {%>
+      <% if (errors[i].path === 'confirm_password') { %>
+        <span><%= errors[i].msg %></span>
+      <% } %>
+    <% } %>
     <button type="submit">Submit</button>
   </form>
-  <% if (errors.length > 0) { %>
-    <% errors.forEach(element => { %>
-      <p><%=element.msg %></p>
-    <% }); %>
-  <% } %>
 </section>
 </body>
 </html>
