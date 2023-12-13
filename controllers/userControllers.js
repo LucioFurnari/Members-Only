@@ -177,7 +177,7 @@ exports.validate_membership = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.render('membership');
+      res.render('membership', { user: req.user, errors: errors.array()});
     } else {
       if (req.body.membership === process.env.MEMBER_CODE) {
         const user = await User.findOneAndUpdate({ email: req.user.email }, { isMember: true });
