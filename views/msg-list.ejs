@@ -21,6 +21,12 @@
           <% } %>
         </div>
         <p class="msg"><%= message.message %></p>
+        <% if (user.isAdmin === true) { %>
+          <form action="/delete_msg" method="POST">
+            <input type="hidden" value=<%= message.id %> name="message_id">
+            <button class="delete-msg" type="submit">Delete Message</button>
+          </form>
+        <% } %>
       </div>
     <%})%>
   <% } %>
