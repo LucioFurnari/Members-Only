@@ -6,12 +6,15 @@ const { handleMessages } = require('../controllers/userControllers');
 // Create message controller.
 // The timestamp uses a current date that formats and then saves it as a string.
 exports.create_message = [
-  body('title', "Don't leave the title empty.").trim().notEmpty().escape(),
-  body('message', "Don't leave the message empty.").trim().notEmpty().escape(),
+  body('title')
+  .trim().notEmpty().escape().withMessage("Don't leave the title empty.")
+  .isLength({ max: 50}).withMessage('The title must have a maximum of 50 characters'),
+  body('message', "Don't leave the message empty.")
+  .trim().notEmpty().escape().withMessage("Don't leave the message empty.")
+  .isLength({ max: 100}).withMessage('The message must have a maximum of 100 characters'),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log(errors.array())
       handleMessages()
       .then((list) => {
         res.render('index', { user: req.user, messages: list, errors: errors.array() });
