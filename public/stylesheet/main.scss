@@ -19,6 +19,9 @@ $input-error: rgb(213, 35, 35);
 $form-button: rgb(61, 44, 220);
 $form-button-hover: rgb(84, 68, 230);
 
+$delete-msg-btn: rgb(193, 32, 32);
+$delete-msg-btn-hover: rgb(223, 43, 43);
+
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -389,5 +392,20 @@ nav {
       padding-top: 4px;
       color: $input-focus;
     }
+  }
+}
+
+// Delete message
+.delete-msg {
+  border: none;
+  border-radius: 12px;
+  margin-top: 12px;
+  padding: 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: $delete-msg-btn;
+  &:hover {
+    background-color: $delete-msg-btn-hover;
   }
 }
