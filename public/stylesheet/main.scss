@@ -82,11 +82,18 @@ body {
 
 footer {
   display: flex;
+  align-items: center;
   margin-top: auto;
   padding: 1rem;
   border-top: 1px solid black;
   p {
     margin-right: 1rem;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $highlight-color;
   }
 }
 
