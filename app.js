@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
-const sassMiddleware = require('node-sass-middleware');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
@@ -23,14 +22,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(sassMiddleware({
-  /* Options */
-  src: path.join(__dirname, 'public', 'stylesheet'),
-  dest: path.join(__dirname, 'public', 'stylesheet'),
-  debug: true,
-  outputStyle: 'compressed',
-  prefix:  '/public/stylesheet'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
 app.use('/public', express.static(path.join(__dirname, 'public')));
