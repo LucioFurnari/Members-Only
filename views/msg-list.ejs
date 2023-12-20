@@ -1,6 +1,9 @@
 <section class="msg-list">
   <% if (user) { %>
     <h2>Welcome <%= user.name %> </h2>
+    <% if (user.isAdmin) { %>
+      <p class="member-msg">You are a <span>Member</span> !</p>
+    <% } %>
     <% if (locals.errors)  {%>
       <%- include('msg-form', { errors: errors }) %>
     <% } else { %>
